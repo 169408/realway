@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.header {
+    background: #333333;
+    padding: 20px;
+}
+
+nav ul {
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 14px 26px;
+}
+
+nav ul li a {
+    color: yellow;
+    font-size: 21px;
+}
+
+.contant {
+    display: block;
+    height: 75vh;
+    min-height: 100%;
+}
+
+form.form {
+    background: pink;
+    border: 2px solid #a000a0;
+    border-radius: 3px;
+    padding: 20px;
+    width: 16%;
+}
+
+form.form p {
+    font-size: 21px;
+    padding: 5px 2px;
+}
+
+form.form input {
+    border-radius: 4px;
+    color: darkslateblue;
+    font-size: 15px;
+    padding: 4px;
+}
+
+form.form button {
+    color: #333333;
+    font-size: 20px;
+    margin: 10px 0 10px 80px;
+    padding: 10px;
+}
+
+.footer {
+    background: #333333;
+    display: block;
+    padding: 32px;
+}
+
+.footer div {
+    text-align: center;
+}
+
+.footer div p {
+    color: yellow;
+}

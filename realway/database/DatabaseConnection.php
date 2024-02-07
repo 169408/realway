@@ -21,12 +21,17 @@ class DatabaseConnection
         return self::$instance;
     }
 
+    public function getConnect(): bool|mysqli
+    {
+        return $this->connect;
+    }
+
     public function getQuery($queryStr) {
         return mysqli_query($this->connect, $queryStr);
     }
 
     public function disconnect() {
-        self::$instance.mysqli_query($this->connect, "exit");
+        return mysqli_query($this->connect, "exit;");
     }
 
 

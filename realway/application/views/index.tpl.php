@@ -43,7 +43,6 @@
         <div class="container">
             <form class="form" action="index.php" method="post">
                 <h3>Add User</h3>
-                <input type="hidden" name="id" />
                 <p>Name: </p>
                 <input type="text" name="name" placeholder="name" />
                 <p>Email: </p>

@@ -5,7 +5,7 @@ require_once "classes/User.php";
 
 $database = new DatabaseConnection();
 
-$title = "RealWay :: Home";
+$title = "RealWay :: Authorisation";
 $user = new User($database);
 
 if(isset($_POST) && $_POST != null) {

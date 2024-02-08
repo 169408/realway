@@ -1,5 +1,7 @@
 <?php
 
+require_once "User.php";
+
 class UserManager
 {
     /** @var DatabaseConnection */
@@ -19,14 +21,6 @@ class UserManager
     }
 
     /**
-     * @return DatabaseConnection
-     */
-    public function getDatabase(): DatabaseConnection
-    {
-        return $this->database;
-    }
-
-    /**
      * @return array
      */
     public function getUsers(): array
@@ -36,6 +30,11 @@ class UserManager
 
     public function authorisationUser($params) {
         return $this->database->getQuery("SELECT * FROM users WHERE name = \"{$params["name"]}\" and password = \"{$params["password"]}\";");
+    }
+
+    public function registrationUser($params) {
+        $user = new User($this->database);
+        $user->addUser($params);
     }
 
 

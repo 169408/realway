@@ -5,10 +5,10 @@ require_once "classes/User.php";
 
 $database = new DatabaseConnection();
 
-$title = "RealWay :: Home";
-$user = new User($database);
+$title = "RealWay :: Registration";
+/*$user = new User($database);*/
 
-if(isset($_POST) && $_POST != null) {
+/*if(isset($_POST) && $_POST != null) {
     //print_r($_POST);
     $parameters = [];
     foreach ($_POST as $postKey => $postValue) {
@@ -28,9 +28,6 @@ if(isset($_POST) && $_POST != null) {
         $resultingUser = $user->getUser($parameters);
         $resultingUser = mysqli_fetch_assoc($resultingUser);
     }
-}
-
-$all = $database->getQuery("SELECT * FROM users;");
-$result = mysqli_fetch_assoc($all);
+}*/
 
 require_once "application/views/registr.tpl.php";

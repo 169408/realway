@@ -31,5 +31,23 @@ class User
         $this->save();
     }
 
+    public function updateUser($params) {
+        $this->id = $params["id"];
+        $this->name = $params["name"];
+        $this->email = $params["email"];
+        $this->password = $params["password"];
+        $this->company = $params["company"];
+
+        $this->save();
+    }
+
+    public function deleteUser($params) {
+        return $this->database->getQuery("DELETE FROM users WHERE id = {$params["id"]};");
+    }
+
+    public function getUser($params) {
+        return $this->database->getQuery("SELECT * FROM users WHERE id = {$params["id"]};");
+    }
+
 
 }

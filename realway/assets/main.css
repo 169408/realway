@@ -22,10 +22,18 @@ a {
     padding: 20px;
 }
 
+nav {
+    grid-template-columns: 1fr 1fr;
+    display: inline-grid;
+    width: 100%;
+}
+
 nav ul {
-    display: block;
+    display: inline-block;
     padding: 10px;
     position: relative;
+    text-align: left;
+    vertical-align: center;
 }
 
 nav ul li {
@@ -38,9 +46,23 @@ nav ul li a {
     font-size: 21px;
 }
 
-.contant {
+nav ul.links {
+    display: inline-block;
+    text-align: right;
+}
+
+nav .links li {
     display: block;
-    height: 75vh;
+    padding: 5px 16px;
+}
+
+nav .links li a {
+    color: blue;
+    font-size: 17px;
+}
+
+.content {
+    display: block;
     min-height: 100%;
 }
 
@@ -48,7 +70,11 @@ form.form {
     background: pink;
     border: 2px solid #a000a0;
     border-radius: 3px;
+    display: inline-block;
+    margin: 20px;
     padding: 20px;
+    position: relative;
+    vertical-align: top;
     width: 16%;
 }
 
@@ -69,6 +95,24 @@ form.form button {
     font-size: 20px;
     margin: 10px 0 10px 80px;
     padding: 10px;
+}
+
+.info, .error {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    position: relative;
+}
+
+.info p, .error p {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    padding: 5px;
+    text-align: center;
+}
+
+.error p {
+    border: 2px solid saddlebrown;
+    color: darkred;
 }
 
 .footer {

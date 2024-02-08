@@ -33,5 +33,4 @@ if(isset($_POST) && $_POST != null) {
 $all = $database->getQuery("SELECT * FROM users;");
 $result = mysqli_fetch_assoc($all);
 
-require_once "application/views/index.tpl.php";
-
+require_once "application/views/registr.tpl.php";

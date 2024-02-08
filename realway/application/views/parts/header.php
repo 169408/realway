@@ -15,6 +15,10 @@
                     <li><a href="../../../about.php">About</a></li>
                     <li><a href="#">Contant</a></li>
                 </ul>
+                <ul class="links">
+                    <li><a href="../registr.php">Sign up</a></li>
+                    <li><a href="../auth.php">Log in</a></li>
+                </ul>
             </nav>
         </div>
     </header>

@@ -1,5 +1,5 @@
 <?php require_once "parts/header.php"; ?>
-    <div class="contant">
+    <div class="content">
         <div class="container">
             <h1>Realway</h1>
         </div>

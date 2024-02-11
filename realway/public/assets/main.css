@@ -86,8 +86,15 @@ form.form p {
 form.form input {
     border-radius: 4px;
     color: darkslateblue;
+    display: block;
     font-size: 15px;
     padding: 4px;
+}
+
+form.form .pError {
+    color: red;
+    font-size: 12px;
+    margin: 1px;
 }
 
 form.form button {

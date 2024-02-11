@@ -16,3 +16,26 @@ function print_arr($data) {
     print_r($data);
     echo "</pre>";
 }
+
+function old($fieldname, $form) {
+    if(isset($_POST[$fieldname])) {
+        if($_POST["form"] == $form) {
+            return transformstr($_POST[$fieldname]);
+        }
+    }
+    return "";
+}
+
+function redirect($url = "") {
+    if($url) {
+        $redirect = $url;
+    } else {
+        $redirect = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "realway/index.php";
+    }
+    header("Location: {$redirect}");
+    die;
+}
+
+function transformstr($str) {
+    return htmlspecialchars($str, ENT_QUOTES);
+}

@@ -1,16 +1,8 @@
 <?php
 
-require_once "database/DatabaseConnection.php";
-require_once "classes/User.php";
-
-$database = new DatabaseConnection();
+require_once "config/supportfiles.php";
 
 $title = "RealWay :: Authorisation";
-$user = new User($database);
-
-require_once "config/validcheck.php";
-
-$all = $database->getQuery("SELECT * FROM users;");
-$result = mysqli_fetch_assoc($all);
+print_arr($_POST);
 
 require_once "application/views/auth.tpl.php";

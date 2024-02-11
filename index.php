@@ -1,16 +1,8 @@
 <?php
 
-require_once "database/DatabaseConnection.php";
-require_once "classes/User.php";
-require_once "config/funcs.php";
-
-$database = new DatabaseConnection();
+require_once "config/supportfiles.php";
 
 $title = "RealWay :: Home";
-$user = new User($database);
-
-require_once "config/validcheck.php";
-
 $all = $database->getQuery("SELECT * FROM users;");
 $result = mysqli_fetch_assoc($all);
 

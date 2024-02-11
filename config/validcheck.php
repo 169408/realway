@@ -36,19 +36,31 @@ if(isset($_POST) && $_POST != null) {
         //$parameters = ["id" => $_POST["id"], "name" => $_POST["name"], "email" => $_POST["email"], "password" => $_POST["password"], "company" => $_POST["company"], "form" => $_POST["form"]];
         if ($_POST["form"] == "add") {
             $user->addUser($parameters);
+            redirect("/index.php");
         }
         if ($_POST["form"] == "update") {
             $user->updateUser($parameters);
+            redirect("/index.php");
         }
         if ($_POST["form"] == "delete") {
             $user->deleteUser($parameters);
+            redirect("/index.php");
         }
         if ($_POST["form"] == "get") {
             $resultingUser = $user->getUser($parameters);
             $resultingUser = mysqli_fetch_assoc($resultingUser);
         }
-        redirect("/index.php");
+        if($_POST["form"] == "authorisation") {
+            print_arr($parameters);
+            $resultingUser = $userManager->authorisationUser($parameters);
+            if(isset($resultingUser)) {
+                $verification = 1;
+            }
+            $resultingUser = mysqli_fetch_assoc($resultingUser);
+        }
     } else {
         $errors = $validation->getProblems();
+        print_arr($_POST);
+        print_arr($errors);
     }
 }

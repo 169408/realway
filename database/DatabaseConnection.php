@@ -27,8 +27,8 @@ class DatabaseConnection
     }
 
     public function getQuery($queryStr) {
-/*        var_dump($queryStr);
-        echo "<br />";*/
+        var_dump($queryStr);
+        echo "<br />";
         return mysqli_query($this->connect, $queryStr);
     }
 

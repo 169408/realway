@@ -15,10 +15,22 @@
                     <li><a href="about.php">About</a></li>
                     <li><a href="#">Contant</a></li>
                 </ul>
-                <ul class="links">
-                    <li><a href="registr.php">Sign up</a></li>
-                    <li><a href="auth.php">Log in</a></li>
-                </ul>
+                <?php if(isset($activeuser) && $activeuser) {
+                    ?>
+                    <ul class="links">
+<!--                        <img src="uploads/avatars/--><?//=$resultingUser["avatar"]?><!--" class="avatar" alt="1">-->
+                        <li><p><?=stripcslashes($resultingUser["name"])?></p></li>
+                        <li><a href="auth.php">Log out</a></li>
+                    </ul>
+                <?php
+                } else {
+                    ?>
+                    <ul class="links">
+                        <li><a href="registr.php">Sign up</a></li>
+                        <li><a href="auth.php">Log in</a></li>
+                    </ul>
+                <?php
+                } ?>
             </nav>
         </div>
     </header>

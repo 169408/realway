@@ -51,6 +51,12 @@ nav ul.links {
     text-align: right;
 }
 
+nav .links p {
+    color: white;
+    display: inline-block;
+    font-size: 17px;
+}
+
 nav .links li {
     display: block;
     padding: 5px 16px;
@@ -59,6 +65,14 @@ nav .links li {
 nav .links li a {
     color: blue;
     font-size: 17px;
+}
+
+.avatar {
+    border: 1px solid #00ffff;
+    border-radius: 25%;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
 }
 
 .content {
@@ -104,6 +118,11 @@ form.form button {
     padding: 10px;
 }
 
+.info .avatar {
+    height: 150px;
+    width: 150px;
+}
+
 .info, .error {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -117,9 +136,34 @@ form.form button {
     text-align: center;
 }
 
+.info .pEdit, .pReturn {
+    padding: 15px;
+}
+
+.info p a.edit, p a.return {
+    border: 2px solid rgba(0, 0, 0, 0);
+    color: darkslateblue;
+    font-size: 19px;
+    padding: 8px 16px;
+    transition: 1s;
+}
+
+.info .edit:hover, .return:hover {
+    border: 2px solid yellow;
+    border-radius: 5px;
+    color: blue;
+    transition: 1s;
+}
+
 .error p {
     border: 2px solid saddlebrown;
     color: darkred;
+}
+
+.comm {
+    color: green;
+    font-size: 19px;
+    padding: 10px 20px;
 }
 
 .footer {

@@ -7,14 +7,16 @@
         <?php if(isset($resultingUser) && $resultingUser != null) {
             ?>
             <div class="info">
+                <p><img src="uploads/avatars/<?=$resultingUser["avatar"]?>" class="avatar" alt="1"></p>
         <?php
             foreach ($resultingUser as $key => $value) {
-                if($key == "password") {continue;}
+                if($key == "password" || $key == "avatar") {continue;}
                 ?>
-                <p class="p<?=$key?>"><?=$key . " : " . $value?></p>
+                <p class="p<?=$key?>"><?=$key . " : " . stripslashes($value)?></p>
                 <?php
             }
             ?>
+                <p class="pEdit"><a href="edituser.php" class="edit">edit profile</a></p>
             </div>
         <?php
         } else {
@@ -24,6 +26,9 @@
             </div>
         <?php
         }?>
+
+        <a href="">Add new post</a>
     </div>
 </div>
+<?php print_arr($_SESSION); ?>
 <?php require_once "parts/footer.php"; ?>

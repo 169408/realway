@@ -35,13 +35,12 @@ class UserManager
         $name = $params["name"];
         $password = $params["password"];
 
-        $strQuery = "SELECT * FROM users WHERE name = ? AND password = ?";
+        $strQuery = "SELECT * FROM users WHERE BINARY name = ? AND BINARY password = ?";
         $stmt = mysqli_prepare($this->database->getConnect(), $strQuery);
 
         mysqli_stmt_bind_param($stmt, "ss", $user_insert_name_safe, $user_insert_password_safe);
         $user_insert_name_safe = mysqli_real_escape_string($this->database->getConnect(), $name);
         $user_insert_password_safe = mysqli_real_escape_string($this->database->getConnect(), $password);
-
         $stmt->execute();
 
         $result = $stmt->get_result();

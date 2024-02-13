@@ -7,6 +7,7 @@ class User
     private $email;
     private $password;
     private $company;
+    private $avatar;
     private $database;
 
     public function __construct($database)
@@ -89,6 +90,37 @@ class User
 
     public function getUser($params) {
         return $this->database->getQuery("SELECT * FROM users WHERE id = {$params["id"]};");
+    }
+
+    public function loadUserAvatar($avatar, $id) {
+        $type = $avatar["type"];
+
+        $name = md5(microtime()).".".str_replace("image/", "", $type);
+        $this->id = $id;
+        $this->avatar = $name;
+        $dir = "uploads/avatars/";
+        $uploadfile = $dir.$name;
+
+        if(move_uploaded_file($avatar["tmp_name"], $uploadfile)) {
+            $sqlquery = "UPDATE users SET avatar = ? WHERE id = ?;";
+            $stmt = mysqli_prepare($this->database->getConnect(), $sqlquery);
+
+            if(!$stmt) {
+                die("Error with prepare statement");
+            }
+
+            mysqli_stmt_bind_param($stmt, "si", $user_input_avatar_safe, $user_input_id_safe);
+            $user_input_avatar_safe = mysqli_real_escape_string($this->database->getConnect(), $this->avatar);
+            $user_input_id_safe = (int)$this->id;
+
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+        } else {
+            return false;
+        }
+
+        return true;
     }
 
 

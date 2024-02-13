@@ -85,4 +85,22 @@ class Validator
     protected function email($value, $rule_value) {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
+
+    public function avatarSecurity($avatar) {
+        $name = $avatar["name"];
+        $type = $avatar["type"];
+        $size = $avatar["size"];
+
+        $blacklist = [".php", ".js", ".java", ".html"];
+
+        foreach ($blacklist as $row) {
+            if(preg_match("/$row\$/i", $name)) return false;
+        }
+
+        if(($type != "image/png") && ($type != "image/jpg") && ($type != "image/jpeg") && ($type != "image/svg")) return false;
+
+        if($size > 7 * 1024 * 1024) return false;
+
+        return true;
+    }
 }

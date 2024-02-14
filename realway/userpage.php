@@ -2,7 +2,6 @@
 
 session_start();
 if(!empty($_SESSION)) {
-    var_dump($_SESSION);
     $_POST = $_SESSION;
     $_POST["form"] = "authorisation";
 }
@@ -21,6 +20,7 @@ foreach ($resultingUser as $key => $value) {
 }
 
 $activeuser = true;
+$posts = $database->fulfilQuery("SELECT * FROM posts WHERE user_id = ?", [$resultingUser["id"]]);
 
 require_once "application/views/userpage.tpl.php";
 

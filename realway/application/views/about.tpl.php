@@ -17,7 +17,13 @@
                 <?php
                 foreach ($result as $key => $value) {
                     ?>
-                    <td><?php echo $value?></td>
+                    <td><?php
+                        if($key == "password") {
+                            echo md5($value);
+                        } else {
+                            echo $value;
+                        }
+                        ?></td>
                     <?php
                 }
                 ?>
@@ -29,7 +35,13 @@
                     <?php
                     foreach ($result as $key => $value) {
                         ?>
-                        <td><?php echo $value?></td>
+                        <td><?php
+                            if($key == "password") {
+                                echo md5($value);
+                            } else {
+                                echo $value;
+                            }
+                            ?></td>
                         <?php
                     }
                     ?>

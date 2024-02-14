@@ -103,4 +103,22 @@ class Validator
 
         return true;
     }
+
+    public function postImageSecurity($image) {
+        $name = $image["name"];
+        $type = $image["type"];
+        $size = $image["size"];
+
+        $blacklist = [".php", ".js", ".java", ".html"];
+
+        foreach ($blacklist as $row) {
+            if(preg_match("/$row\$/i", $name)) return false;
+        }
+
+        if(($type != "image/png") && ($type != "image/jpg") && ($type != "image/jpeg") && ($type != "image/svg") && ($type != "image/gif")) return false;
+
+        if($size > 7 * 1024 * 1024) return false;
+
+        return true;
+    }
 }

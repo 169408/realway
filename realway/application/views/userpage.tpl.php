@@ -27,7 +27,24 @@
         <?php
         }?>
 
-        <a href="">Add new post</a>
+        <a class="add" href="post.php"><text>Add new post</text></a>
+
+        <?php
+            while(isset($posts) && $post = mysqli_fetch_assoc($posts)) {
+                ?>
+        <div class="post">
+            <h2><a href=""><?=$post["title"]?></a></h2>
+            <p><?=isset($post["content"]) ? $post["content"] : ""?></p>
+            <?php if(isset($post["image"]) && $post["image"] != "") {
+                ?>
+                <p><img src="uploads/postImage/<?=$post["image"]?>" class="postImage" alt="2" /></p>
+            <?php
+            }
+            ?>
+        </div>
+        <?php
+            }
+        ?>
     </div>
 </div>
 <?php print_arr($_SESSION); ?>

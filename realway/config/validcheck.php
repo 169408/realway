@@ -32,7 +32,7 @@ if(isset($_POST) && $_POST != null) {
 
     $validation = $validator->validate($parameters, $rules);
 
-    if(!$validation->hasProblems()) {
+    if(!$validation->hasProblems() && isset($_POST["form"])) {
         //$parameters = ["id" => $_POST["id"], "name" => $_POST["name"], "email" => $_POST["email"], "password" => $_POST["password"], "company" => $_POST["company"], "form" => $_POST["form"]];
         if ($_POST["form"] == "add") {
             $user->addUser($parameters);
@@ -57,6 +57,22 @@ if(isset($_POST) && $_POST != null) {
                 $verification = 1;
             }
             $resultingUser = mysqli_fetch_assoc($resultingUser);
+        }
+        if($_POST["form"] == "newPost") {
+            if(isset($_FILES["image"])) {
+                $newImage = "";
+                $image = $_FILES["image"];
+
+                if($validator->postImageSecurity($image)) {
+                    $newImage = $post->loadPostImage($image);
+                    $comm = "OK";
+                } else {
+                    dd("Error with load post image");
+                }
+                $parameters["image"] = $newImage;
+            }
+            $post->addPost($parameters);
+            redirect("/userpage.php");
         }
     } else {
         $errors = $validation->getProblems();

@@ -16,5 +16,7 @@ if(isset($_POST) && $_POST["form"] == "changeAvatar") {
         dd("Error with load user avatar");
     }
 }
+$activeuser = true;
+$resultingUser = $_SESSION;
 
 require_once "application/views/edituser.tpl.php";

@@ -62,7 +62,4 @@ class DatabaseConnection
         return $result;
     }
 
-
-
-
 }

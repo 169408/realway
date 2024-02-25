@@ -22,10 +22,37 @@ a {
     padding: 20px;
 }
 
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 96%;
+}
+
+.header div {
+    display: flex;
+}
+
+.header .barmenu {
+    color: white;
+    cursor: pointer;
+    font-size: 26px;
+    float: right;
+    margin: auto;
+}
+
+.header #bar {
+    display: inline;
+}
+
+.header #closebar {
+    display: none;
+}
+
 nav {
     grid-template-columns: 1fr 1fr;
     display: inline-grid;
-    width: 100%;
+    width: 98%;
 }
 
 nav ul {
@@ -45,7 +72,7 @@ nav ul li a {
     color: yellow;
     font-size: 21px;
 }
-
+/*
 nav ul.links {
     display: inline-block;
     text-align: right;
@@ -65,6 +92,76 @@ nav .links li {
 nav .links li a {
     color: blue;
     font-size: 17px;
+}*/
+
+#overlay {
+    background: rgba(0, 0, 0, 0);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: 0.8s;
+    text-replace: all;
+    width: 100%;
+    z-index: 990;
+}
+
+.header .drop_menu {
+    background: rgba(200, 211, 255, 0.4);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 15px 28px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 23%;
+    z-index: 999;
+}
+
+.header .drop_menu .pName {
+    color: limegreen;
+    font-size: 20px;
+}
+
+.header .drop_menu ul {
+    list-style: none;
+    margin-left: 9px;
+    margin-top: 20.5px;
+    width: 90%;
+}
+
+.header .drop_menu ul .barmenu {
+    display: block;
+    margin-top: 6px;
+}
+
+.header .drop_menu li {
+    margin: 25px 10px;
+}
+
+.header .drop_menu li a {
+    background: darkred;
+    color: gold;
+    display: block;
+    font-size: 23px;
+    padding: 12px 23px;
+}
+
+.drop_menu .barmenu {
+    margin-right: 25px;
+    margin-top: 25.5px;
+}
+
+.drop_menu ul.links {
+    display: block;
+    margin-top: 70px;
+}
+
+.drop_menu ul.links li {
+    margin: 25px 10px;
 }
 
 .avatar {
@@ -195,8 +292,24 @@ a.add:hover {
     width: 70%;
 }
 
-.post h2 {
+.post .navigation {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    width: 100%;
+}
+
+.post .navigation h2 {
+    display: inline-block;
     padding: 10px 0;
+}
+
+.post .navigation form {
+    text-align: right;
+}
+
+.post .navigation form button {
+    font-size: 15px;
+    padding: 5px;
 }
 
 .post h2 a {
@@ -213,6 +326,16 @@ a.add:hover {
     max-height: 400px;
     max-width: 400px;
     width: auto;
+}
+
+.kruch {
+    text-align: center;
+}
+
+.kruch img {
+    height: 48%;
+    padding: 50px;
+    width: 35%;
 }
 
 

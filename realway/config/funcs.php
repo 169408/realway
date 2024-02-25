@@ -39,3 +39,8 @@ function redirect($url = "") {
 function transformstr($str) {
     return htmlspecialchars($str, ENT_QUOTES);
 }
+
+function abort($code = 404) {
+    http_response_code($code);
+    return VIEWS . "/errors/{$code}.tpl.php";
+}

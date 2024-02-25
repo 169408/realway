@@ -16,7 +16,7 @@ class Post
 
     public function save() {
         if($this->post_id != null){
-            $queries = [];
+            /*$queries = [];
             $strquery = "UPDATE posts SET ";
             if($this->title != null) {
                 $queries[] = "title = ?";
@@ -33,30 +33,26 @@ class Post
                 }
                 $strquery = $strquery . " AND " . $queries[$i];
             }
-            echo $strquery;
+            echo $strquery;*/
             //return $this->database->getQuery("UPDATE users SET name = \"$this->name\", email = \"$this->email\", password = \"$this->password\", company = \"$this->company\" WHERE id = $this->id;");
             //return $this->database->fulfilQuery("UPDATE posts SET ")
+            return $this->database->fulfilQuery("UPDATE posts SET title = ?, content = ?, image = ?, user_id = ? WHERE post_id = ?;", [$this->title, $this->content, $this->image, $this->user_id, $this->post_id]);
         }
-        /*$sqlquery = "INSERT INTO posts(title, content, image, user_id VALUES (?, ?, ?, ?);";
-        $stmt = mysqli_prepare($this->database->getConnect(), $sqlquery);
-
-        if(!$stmt) {
-            die("Error with prepare statement");
-        }
-
-        mysqli_stmt_bind_param($stmt, "ssss", $user_input_name_safe, $user_input_email_safe, $user_input_password_safe, $user_input_company_safe);
-        $user_input_name_safe = mysqli_real_escape_string($this->database->getConnect(), $this->name);
-        $user_input_email_safe = mysqli_real_escape_string($this->database->getConnect(), $this->email);
-        $user_input_password_safe = mysqli_real_escape_string($this->database->getConnect(), $this->password);
-        $user_input_company_safe = mysqli_real_escape_string($this->database->getConnect(), $this->company);
-
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);*/
 
         return $this->database->fulfilQuery("INSERT INTO posts (title, content, image, user_id) VALUES (?, ?, ?, ?);", [$this->title, $this->content, $this->image, $this->user_id]);
     }
 
     public function addPost($params) {
+        $this->title = $params["title"];
+        $this->content = $params["content"];
+        $this->image = isset($params["image"]) ? $params["image"] : "";
+        $this->user_id = $params["user_id"];
+
+        $this->save();
+    }
+
+    public function updatePost($params) {
+        $this->post_id = $params["post_id"];
         $this->title = $params["title"];
         $this->content = $params["content"];
         $this->image = isset($params["image"]) ? $params["image"] : "";

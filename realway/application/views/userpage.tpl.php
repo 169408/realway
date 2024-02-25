@@ -16,7 +16,7 @@
                 <?php
             }
             ?>
-                <p class="pEdit"><a href="edituser.php" class="edit">edit profile</a></p>
+                <p class="pEdit"><a href="edituser" class="edit">edit profile</a></p>
             </div>
         <?php
         } else {
@@ -27,13 +27,22 @@
         <?php
         }?>
 
-        <a class="add" href="post.php"><text>Add new post</text></a>
+        <a class="add" href="post"><text>Add new post</text></a>
 
         <?php
             while(isset($posts) && $post = mysqli_fetch_assoc($posts)) {
                 ?>
         <div class="post">
-            <h2><a href=""><?=$post["title"]?></a></h2>
+            <div class="navigation">
+                <h2><a href=""><?=$post["title"]?></a></h2>
+                <form action="post.php" method="post">
+                    <input type="hidden" name="post_id" value="<?=$post["post_id"]?>" />
+                    <input type="hidden" name="title" value="<?=$post["title"]?>" />
+                    <input type="hidden" name="content" value="<?=$post["content"]?>" />
+                    <input type="hidden" name="image" value="<?=$post["image"]?>" />
+                    <button type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                </form>
+            </div>
             <p><?=isset($post["content"]) ? $post["content"] : ""?></p>
             <?php if(isset($post["image"]) && $post["image"] != "") {
                 ?>

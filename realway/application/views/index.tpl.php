@@ -1,4 +1,4 @@
-<?php require_once "parts/header.php"; ?>
+<?php require_once VIEWS . "/parts/header.php"; ?>
     <div class="content">
         <div class="container">
             <h1>Realway</h1>
@@ -53,7 +53,7 @@
         <?php /*$database->disconnect(); */?>
         <h2><?php echo mysqli_fetch_assoc($database->getQuery("SELECT * FROM users WHERE id = 1;"))["name"]; ?></h2>
         <div class="container">
-            <form class="form" action="index.php" method="post">
+            <form class="form" action="index" method="post">
                 <?php
                     $current_form = [];
                     if(isset($errors) && $_POST["form"] == "add") {
@@ -112,7 +112,7 @@
                 <button type="submit">Submit</button>
             </form>
 
-            <form class="form" action="index.php" method="post">
+            <form class="form" action="index" method="post">
                 <?php
                 $current_form = [];
                 if(isset($errors) && $_POST["form"] == "update") {
@@ -182,7 +182,7 @@
                 <button type="submit">Submit</button>
             </form>
 
-            <form class="form" action="index.php" method="post">
+            <form class="form" action="index" method="post">
                 <h3>Delete User</h3>
                 <p>ID: </p>
                 <input type="number" name="id" />
@@ -191,7 +191,7 @@
                 <button type="submit">Submit</button>
             </form>
 
-            <form class="form" action="index.php" method="post">
+            <form class="form" action="index" method="post">
                 <h3>Get User</h3>
                 <p>ID: </p>
                 <input type="number" name="id" />
@@ -199,7 +199,7 @@
 
                 <button type="submit">Submit</button>
 
-                <?php if(isset($resultingUser) && $resultingUser != null) {
+                <?php if(isset($resultingUser) && $resultingUser != null && $_POST["form"] == "get") {
                     ?>
                     <table border="2">
                         <tr>
@@ -227,4 +227,4 @@
 
         </div>
     </div>
-<?php require_once "parts/footer.php"; ?>
+<?php require_once VIEWS . "/parts/footer.php"; ?>

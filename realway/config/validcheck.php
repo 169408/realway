@@ -1,6 +1,6 @@
 <?php
 
-require_once "config/Validator.php";
+require_once CONFIG . "/Validator.php";
 
 $validator = new Validator();
 
@@ -24,6 +24,11 @@ $rules = [
 ];
 
 if(isset($_POST) && $_POST != null) {
+    if(isset($_SESSION)) {
+        if (trim(parse_url($_SERVER["REQUEST_URI"])["path"], "/") != "auth") {
+            $activeuser = true;
+        }
+    }
     //print_r($_POST);
     $parameters = [];
     foreach ($_POST as $postKey => $postValue) {
@@ -36,30 +41,32 @@ if(isset($_POST) && $_POST != null) {
         //$parameters = ["id" => $_POST["id"], "name" => $_POST["name"], "email" => $_POST["email"], "password" => $_POST["password"], "company" => $_POST["company"], "form" => $_POST["form"]];
         if ($_POST["form"] == "add") {
             $user->addUser($parameters);
-            redirect("/index.php");
+            redirect("/index");
         }
         if ($_POST["form"] == "update") {
             $user->updateUser($parameters);
-            redirect("/index.php");
+            redirect("/index");
         }
         if ($_POST["form"] == "delete") {
             $user->deleteUser($parameters);
-            redirect("/index.php");
+            redirect("/index");
         }
         if ($_POST["form"] == "get") {
             $resultingUser = $user->getUser($parameters);
             $resultingUser = mysqli_fetch_assoc($resultingUser);
         }
         if($_POST["form"] == "authorisation") {
-            print_arr($parameters);
             $resultingUser = $userManager->authorisationUser($parameters);
-            if(isset($resultingUser)) {
-                $verification = 1;
-            }
             $resultingUser = mysqli_fetch_assoc($resultingUser);
+            $verification = 1;
+            if($resultingUser != null) {
+                $verification = 0;
+            }
+            //echo $verification;
         }
         if($_POST["form"] == "newPost") {
-            if(isset($_FILES["image"])) {
+            if(isset($_FILES["image"]) && $_FILES["image"]["name"] != "") {
+                echo "tufta";
                 $newImage = "";
                 $image = $_FILES["image"];
 
@@ -71,12 +78,17 @@ if(isset($_POST) && $_POST != null) {
                 }
                 $parameters["image"] = $newImage;
             }
-            $post->addPost($parameters);
-            redirect("/userpage.php");
+            if(isset($_POST["post_id"]) && $_POST["post_id"] != "") {
+                $parameters["post_id"] = $_POST["post_id"];
+                $post->updatePost($parameters);
+            } else {
+                $post->addPost($parameters);
+            }
+            redirect("/userpage");
         }
     } else {
         $errors = $validation->getProblems();
-        print_arr($_POST);
+        //print_arr($_POST);
         print_arr($errors);
     }
 }

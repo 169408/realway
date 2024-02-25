@@ -11,7 +11,7 @@
         }
 
         ?>
-        <form class="form" action="userpage.php" method="post">
+        <form class="form" action="userpage" method="post">
             <?php
             $current_form = [];
             if(isset($errors) && $_POST["form"] == "authorisation") {

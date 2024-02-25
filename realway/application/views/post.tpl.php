@@ -1,5 +1,3 @@
-
-<?php print_arr($_POST); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,19 +9,20 @@
 <body>
     <div class="container">
         <div class="content">
-            <form class="form formPost" action="post.php" method="post" enctype="multipart/form-data">
+            <form class="form formPost" action="post" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="post_id" value="<?php if(isset($_POST["post_id"])){echo $_POST["post_id"];} ?>">
                 <p>Title: </p>
-                <input type="text" name="title" value="<?php old("title", "newPost"); ?>" />
+                <input type="text" name="title" value="<?php echo old("title", "newPost"); ?>" />
                 <p>Wave: </p>
-                <textarea name="content" cols="30" rows="12" value="<?php old("content", "newPost"); ?>"></textarea>
+                <textarea name="content" cols="30" rows="12"><?php echo old("content", "newPost"); ?></textarea>
                 <p>Picture: </p>
-                <input type="file" name="image" value="<?php old("image", "newPost"); ?>" />
+                <input type="file" name="image" />
                 <input type="hidden" name="user_id" value="<?=$_POST["id"]?>">
                 <input type="hidden" name="form" value="newPost">
                 <button type="submit">Publish</button>
             </form>
 <!--            Let me intrioduce my favourite anime characther Cukijama Szu. He is the best!-->
-            <p class="pReturn"><a href="userpage.php" class="return">Return to My Page</a></p>
+            <p class="pReturn"><a href="userpage" class="return">Return to My Page</a></p>
         </div>
     </div>
 </body>

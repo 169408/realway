@@ -5,7 +5,7 @@ class DatabaseConnection
     public static $instance = null;
     private $connect;
 
-    public function __construct()
+    protected function __construct()
     {
         $this->connect = mysqli_connect("127.0.0.1", "root", "ioskillMy_bra1n", "realway");
 
@@ -27,8 +27,6 @@ class DatabaseConnection
     }
 
     public function getQuery($queryStr) {
-/*        var_dump($queryStr);
-        echo "<br />";*/
         return mysqli_query($this->connect, $queryStr);
     }
 

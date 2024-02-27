@@ -3,7 +3,7 @@
 //require_once "config/supportfiles.php";
 
 if (isset($errors) || $resultingUser == null) {
-    header("Location: auth.php", true, 307);
+    header("Location: auth", true, 307);
     die;
 }
 

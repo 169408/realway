@@ -56,5 +56,4 @@
         ?>
     </div>
 </div>
-<?php print_arr($_SESSION); ?>
 <?php require_once "parts/footer.php"; ?>

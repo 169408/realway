@@ -29,7 +29,6 @@ if(isset($_POST) && $_POST != null) {
             $activeuser = true;
         }
     }
-    //print_r($_POST);
     $parameters = [];
     foreach ($_POST as $postKey => $postValue) {
         $parameters[$postKey] = $postValue;
@@ -38,7 +37,6 @@ if(isset($_POST) && $_POST != null) {
     $validation = $validator->validate($parameters, $rules);
 
     if(!$validation->hasProblems() && isset($_POST["form"])) {
-        //$parameters = ["id" => $_POST["id"], "name" => $_POST["name"], "email" => $_POST["email"], "password" => $_POST["password"], "company" => $_POST["company"], "form" => $_POST["form"]];
         if ($_POST["form"] == "add") {
             $user->addUser($parameters);
             redirect("/index");
@@ -62,7 +60,6 @@ if(isset($_POST) && $_POST != null) {
             if($resultingUser != null) {
                 $verification = 0;
             }
-            //echo $verification;
         }
         if($_POST["form"] == "newPost") {
             if(isset($_FILES["image"]) && $_FILES["image"]["name"] != "") {
@@ -88,7 +85,6 @@ if(isset($_POST) && $_POST != null) {
         }
     } else {
         $errors = $validation->getProblems();
-        //print_arr($_POST);
         print_arr($errors);
     }
 }

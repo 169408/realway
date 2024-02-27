@@ -27,7 +27,7 @@
                 <div class="drop_menu">
                     <a class="barmenu" id="closebar" onclick="openBar()"><i class="fa fa-times" aria-hidden="true"></i></a>
                     <ul>
-                        <li><img src="uploads/avatars/<?=$_POST["avatar"];?>" alt="avatar" class="avatar"><p class="pName"><?=$_POST["name"]?></p></li>
+                        <li><img src="uploads/avatars/<?=$_POST["avatar"] ?? $resultingUser["avatar"];?>" alt="avatar" class="avatar"><p class="pName"><?=$_POST["name"]?></p></li>
                         <li><a href="userpage">My page</a></li>
                         <li><a href="edituser">Setting</a></li>
                         <li><a href="auth">Log out</a></li>

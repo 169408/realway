@@ -7,7 +7,7 @@ require_once CLASSES . "/User.php";
 require_once CLASSES . "/UserManager.php";
 require_once CLASSES . "/Post.php";
 
-$database = new DatabaseConnection();
+$database = DatabaseConnection::getInstance();
 $user = new User($database);
 $userManager = new UserManager($database);
 $post = new Post($database);

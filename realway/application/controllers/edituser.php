@@ -16,5 +16,6 @@ if(isset($_POST["form"]) && $_POST["form"] == "changeAvatar") {
 }
 $activeuser = true;
 $resultingUser = $_SESSION;
+print_arr($resultingUser);
 
 require_once VIEWS . "/edituser.tpl.php";

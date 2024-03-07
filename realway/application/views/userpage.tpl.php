@@ -10,7 +10,7 @@
                 <p><img src="uploads/avatars/<?=$resultingUser["avatar"]?>" class="avatar" alt="1"></p>
         <?php
             foreach ($resultingUser as $key => $value) {
-                if($key == "password" || $key == "avatar") {continue;}
+                if($key == "id" || $key == "password" || $key == "avatar") {continue;}
                 ?>
                 <p class="p<?=$key?>"><?=$key . " : " . stripslashes($value)?></p>
                 <?php

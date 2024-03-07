@@ -83,8 +83,12 @@ if(isset($_POST) && $_POST != null) {
             }
             redirect("/userpage");
         }
+        if($_POST["form"] == "changes") {
+            dd("PIZS");
+            print_arr($_POST);
+        }
     } else {
         $errors = $validation->getProblems();
-        print_arr($errors);
+        //print_arr($errors);
     }
 }

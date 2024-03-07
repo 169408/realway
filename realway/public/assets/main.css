@@ -3,6 +3,10 @@ body {
     height: 100%;
 }
 
+body.edituser {
+    background: #776;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -216,10 +220,10 @@ form.form .pError {
 }
 
 form.form button {
-    color: #333333;
-    font-size: 20px;
-    margin: 10px 0 10px 80px;
-    padding: 10px;
+    color: #333333 !important;
+    font-size: 20px !important;
+    margin: 10px 0 10px 80px !important;
+    padding: 10px !important;
 }
 
 form.formPost {
@@ -343,6 +347,65 @@ a.add:hover {
     height: 48%;
     padding: 50px;
     width: 35%;
+}
+
+.content .data {
+    background: #bbb;
+    padding: 10px;
+}
+
+.data .set {
+    display: none;
+}
+
+.content .data .field {
+    background: whitesmoke;
+    border: 1px solid black;
+    display: inline-block;
+    font-size: 17px;
+    padding: 4px 8px;
+}
+
+.content .data p, .content .data input {
+    color: darkblue;
+    margin: 13px;
+    width: 180px;
+}
+
+.content .data input {
+    width: 197.5px;
+}
+
+.content .data button {
+    font-size: 16px;
+    margin-left: 20px;
+    padding: 2px;
+}
+
+.content .change {
+    background: royalblue;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    padding: 13px 18px;
+    text-shadow: 2px 1px 1px #000;
+}
+
+.content .safe {
+    background: rgba(150, 190, 150, 0.8);
+    bottom: 0;
+    display: none;
+    height: 5%;
+    left: 0;
+    padding: 15px 28px;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+
+.content .safe .change {
+    position: fixed;
+    right: 28px;
 }
 
 
